@@ -2,6 +2,8 @@
 
 一個功能完整的學校作業管理系統，支持教室管理、作業提交、評分系統、抽獎功能和數據導出。
 
+⚠️本專案是Vibe Coding但有做基本的數據安全防護及測試了⚠️
+
 ## ✨ 主要功能
 
 ### 🏫 教室管理
@@ -279,16 +281,12 @@ A: 檢查瀏覽器是否支持 CSS3 和 Web Audio API
 
 如果您遇到任何問題或有功能建議，請：
 
-- 📧 發送郵件至：support@yourdomain.com
+- 📧 發送郵件至：iain@100thy.com
 - 🐛 在GitHub上創建Issue
-- 💬 加入我們的討論群組
 
 ---
 
 ⭐ 如果這個項目對您有幫助，請給我們一個星標！
 
 🔗 **相關鏈接**
-- [在線演示](http://demo.yourdomain.com)
-- [用戶手冊](USER_MANUAL.md)
-- [API文檔](API_DOCS.md)
-- [更新日誌](CHANGELOG.md)
+- [在線演示](http://work.100thy.com)
