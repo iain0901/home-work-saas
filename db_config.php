@@ -1,9 +1,9 @@
 <?php
 // MySQL數據庫配置
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'workt');
-define('DB_USER', 'workt');
-define('DB_PASS', '4P7wf3n8inXCp4pZ');
+define('DB_NAME', '');
+define('DB_USER', '');
+define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 class Database {
