@@ -1,0 +1,1595 @@
+/* 臺北市幼華高級中學 - 網站實作作業平台樣式 v2.1 */
+/* 重置和基礎樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', 'PingFang TC', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 標題樣式 */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    border-radius: 2px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    opacity: 0.95;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+}
+
+/* 標題操作按鈕 */
+.header-actions {
+    margin-top: 25px;
+}
+
+.btn-view, .btn-upload {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.btn-view:hover, .btn-upload:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* 提示訊息 */
+.alert {
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.alert.success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+/* 成功頁面樣式 - Neumorphic 風格 */
+.success-container {
+    background: var(--surface);
+    padding: 80px 50px;
+    border-radius: 30px;
+    box-shadow: var(--elevation);
+    text-align: center;
+    margin: 40px auto;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.success-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #4CAF50, #45a049, #66BB6A);
+    border-radius: 30px 30px 0 0;
+}
+
+.success-icon {
+    width: 120px;
+    height: 120px;
+    background: var(--surface);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 3.5rem;
+    color: #4CAF50;
+    box-shadow: var(--elevation);
+    animation: successPulse 2s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.success-container h3 {
+    color: var(--text);
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: none;
+}
+
+.success-container p {
+    color: var(--muted);
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.success-actions {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.btn-upload-another, .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 35px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--elevation);
+    border: none;
+}
+
+.btn-upload-another:hover, .btn-view-all:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-soft);
+}
+
+.btn-upload-another:active, .btn-view-all:active {
+    transform: translateY(0);
+    box-shadow: var(--inset);
+}
+
+.btn-view-all {
+    position: relative;
+}
+
+.btn-view-all::before {
+    content: '🏠';
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.btn-upload-another::before {
+    content: '➕';
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* 統計區塊 */
+.stats-section {
+    background: var(--surface);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: var(--elevation);
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #4CAF50, #45a049, #66BB6A, #4a90e2, #357abd);
+    border-radius: 30px 30px 0 0;
+}
+
+.stats-title {
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+}
+
+.stats-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90e2, #4CAF50);
+    border-radius: 2px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 35px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px 25px;
+    background: var(--surface);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    box-shadow: var(--elevation-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90e2, #4CAF50, #ff6b6b);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.stat-item:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--elevation);
+}
+
+.stat-number {
+    font-size: 3.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #4a90e2, #4CAF50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    text-shadow: none;
+    display: block;
+    position: relative;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.stat-item::after {
+    content: attr(data-icon);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover::after {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+/* 上傳表單 */
+.upload-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+}
+
+.upload-form h3 {
+    color: #2c3e50;
+    margin-bottom: 35px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.upload-form h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.form-group label::before {
+    content: '✦';
+    color: #667eea;
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px 20px;
+    border: 2px solid #e8f4fd;
+    border-radius: 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group input::placeholder {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(-1px);
+}
+
+/* 上傳說明區塊 */
+.upload-info {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.upload-info h3 {
+    color: #2c3e50;
+    margin-bottom: 35px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.upload-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.info-item {
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.info-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-item h4 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.info-item p {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* 作業列表 */
+.assignments-list {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.assignments-list h3 {
+    color: #2c3e50;
+    margin-bottom: 35px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.assignments-list h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.no-data {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 60px;
+}
+
+.no-data-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-data h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+.no-data p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn-upload-first {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-upload-first:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* 作業卡片網格 */
+.assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+}
+
+.assignment-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #e9ecef;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.assignment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.assignment-card:hover::before {
+    transform: scaleX(1);
+}
+
+.assignment-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.assignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.assignment-header h4 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-right: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.group-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.assignment-info {
+    margin-bottom: 20px;
+}
+
+.assignment-info p {
+    margin-bottom: 12px;
+    color: #34495e;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.assignment-info strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.assignment-info a {
+    color: #667eea;
+    text-decoration: none;
+    word-break: break-all;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.assignment-info a:hover {
+    color: #764ba2;
+    background: rgba(102, 126, 234, 0.1);
+    text-decoration: none;
+}
+
+/* 訪問按鈕 */
+.assignment-visit {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.btn-visit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--surface);
+    color: #4a90e2;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--elevation);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-visit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-soft);
+    color: #357abd;
+    border-color: #4a90e2;
+}
+
+.btn-visit:active {
+    transform: translateY(0);
+    box-shadow: var(--inset);
+}
+
+.visit-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-visit:hover .visit-icon {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.visit-text {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.assignment-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex: 1;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+/* 編輯彈窗 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    margin: 3% auto;
+    padding: 40px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #95a5a6;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close:hover {
+    color: #2c3e50;
+    background: rgba(44, 62, 80, 0.1);
+    transform: rotate(90deg);
+}
+
+.modal-content h3 {
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.modal-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .upload-form, .assignments-list, .upload-info, .stats-section {
+        padding: 25px;
+    }
+    
+    .assignments-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 25px;
+    }
+    
+    .assignment-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .group-badge {
+        align-self: flex-start;
+    }
+    
+    .btn-submit {
+        padding: 18px 30px;
+        font-size: 16px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .stats-section {
+        padding: 30px 25px;
+        margin-top: 35px;
+    }
+    
+    .stats-title {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    .stat-number {
+        font-size: 2.8rem;
+    }
+    
+    .btn-large {
+        font-size: 1.1rem;
+        padding: 16px 30px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .success-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .success-container {
+        padding: 60px 30px;
+        margin: 30px auto;
+    }
+    
+    .success-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+    
+    .success-container h3 {
+        font-size: 2.2rem;
+    }
+    
+    .success-container p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .form-group input {
+        padding: 15px 18px;
+        font-size: 14px;
+    }
+    
+    .btn-submit {
+        padding: 16px 25px;
+        font-size: 14px;
+    }
+    
+    .assignment-card {
+        padding: 20px;
+    }
+    
+    .assignment-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-edit, .btn-delete {
+        width: 100%;
+    }
+    
+    .btn-visit {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .visit-icon {
+        font-size: 1.1rem;
+    }
+    
+    .success-container {
+        padding: 50px 25px;
+        margin: 20px auto;
+    }
+    
+    .success-container h3 {
+        font-size: 2rem;
+    }
+    
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .btn-upload-another, .btn-view-all {
+        min-width: 160px;
+        padding: 16px 25px;
+        font-size: 1rem;
+    }
+    
+    .stats-section {
+        padding: 25px 20px;
+        margin-top: 30px;
+    }
+    
+    .stats-title {
+        font-size: 1.4rem;
+    }
+    
+    .stat-number {
+        font-size: 2.4rem;
+    }
+    
+    .stat-item {
+        padding: 25px 20px;
+    }
+    
+    .btn-large {
+        font-size: 1rem;
+        padding: 14px 25px;
+    }
+}
+
+/* 滾動條美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+/* =========================
+   Neumorphic UI Overrides
+   ========================= */
+:root {
+    --surface: #e0e0e0;
+    --text: #4d4d4d;
+    --muted: #6b6b6b;
+    --shadow-dark: #bebebe;
+    --shadow-light: #ffffff;
+    --radius: 14px;
+    --elevation: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    --elevation-soft: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    --inset: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+}
+
+/* 全局背景與字色（保持原漸層背景）*/
+body {
+    color: var(--text);
+}
+
+.container { padding: 24px; }
+
+/* 標題區（保持部分原始效果）*/
+header { color: white; }
+header::before { display: block; }
+header h1 {
+    background: linear-gradient(45deg, #fff, #f0f0f0) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3) !important;
+    letter-spacing: 2px;
+}
+header h2 {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+    letter-spacing: 1px;
+}
+
+/* 共用 Neumorphic 外觀 */
+.neu, .upload-form, .assignments-list, .assignment-card, .stats-section, .upload-info, .success-container, .modal-content {
+    background: var(--surface) !important;
+    border: none !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--elevation) !important;
+}
+
+/* 文字與連結 */
+.assignments-list h3, .upload-form h3, .upload-info h3 { color: var(--muted) !important; }
+.assignment-info p, .no-data p, .info-item p { color: var(--text); }
+.assignment-info a {
+    color: #555;
+    text-decoration: none;
+}
+.assignment-info a:hover { color: #333; }
+
+/* 卡片與徽章 */
+.assignment-card { transition: transform 0.15s ease; }
+.assignment-card:hover { transform: translateY(-2px); box-shadow: var(--elevation-soft) !important; }
+.group-badge {
+    background: var(--surface) !important;
+    color: #666 !important;
+    border-radius: 999px !important;
+    box-shadow: var(--elevation) !important;
+}
+
+/* 統計卡片 */
+.stat-item { background: var(--surface) !important; box-shadow: var(--elevation) !important; border: none !important; }
+.stat-number { color: #5e5e5e !important; text-shadow: none !important; }
+.stat-label { color: #7a7a7a !important; }
+
+/* 輕量提示（保持單色）*/
+.alert.success {
+    background: var(--surface) !important;
+    color: #4f7f4f !important;
+    box-shadow: var(--elevation) !important;
+}
+.alert::before { display: none; }
+
+/* 表單元素：凹陷（內凹）*/
+.form-group label { color: #6a6a6a !important; }
+.form-group label::before { display: none; }
+.form-group input {
+    background: var(--surface) !important;
+    border: none !important;
+    box-shadow: var(--inset) !important;
+    color: var(--text) !important;
+}
+.form-group input:focus {
+    box-shadow: inset 7px 7px 14px var(--shadow-dark), inset -7px -7px 14px var(--shadow-light) !important;
+    transform: none !important;
+}
+
+/* 按鈕：浮起與按下（凹下）*/
+.btn-submit, .btn-upload, .btn-view, .btn-upload-first, .btn-upload-another, .btn-view-all, .btn-edit, .btn-delete {
+    background: var(--surface) !important;
+    color: #5a5a5a !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: var(--elevation) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+.btn-submit:hover, .btn-upload:hover, .btn-view:hover, .btn-upload-first:hover, .btn-upload-another:hover, .btn-view-all:hover, .btn-edit:hover, .btn-delete:hover {
+    box-shadow: var(--elevation-soft) !important;
+    transform: translateY(-1px);
+}
+.btn-submit:active, .btn-upload:active, .btn-view:active, .btn-upload-first:active, .btn-upload-another:active, .btn-view-all:active, .btn-edit:active, .btn-delete:active {
+    box-shadow: var(--inset) !important;
+    transform: translateY(0);
+}
+
+/* 無資料區塊 */
+.no-data { background: var(--surface); box-shadow: var(--elevation); border-radius: var(--radius); }
+.no-data-icon { opacity: 0.35; }
+
+/* 模態框 */
+.modal { background: rgba(224,224,224,0.6) !important; }
+.modal-content { box-shadow: var(--elevation) !important; }
+.close { color: #7a7a7a !important; background: var(--surface) !important; box-shadow: var(--elevation) !important; }
+.close:hover { box-shadow: var(--elevation-soft) !important; transform: rotate(0) scale(1.02); }
+
+/* 置頂的操作列與大按鈕 */
+.header-actions { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-top: 25px; 
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-large { 
+    font-size: 1.2rem; 
+    padding: 18px 35px; 
+    border-radius: 16px; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-large::before {
+    content: '➕';
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-large::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+}
+
+.btn-large:hover::after {
+    left: 100%;
+}
+
+/* Neumorphic 覆蓋下的大按鈕外觀同步 */
+.btn-large.btn-upload { 
+    box-shadow: var(--elevation) !important; 
+    background: var(--surface) !important;
+    color: #4a90e2 !important;
+    border: 2px solid #4a90e2 !important;
+}
+
+.btn-large.btn-upload:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--elevation-soft) !important;
+    background: #4a90e2 !important;
+    color: white !important;
+}
+
+/* 管理按鈕樣式 */
+.btn-admin {
+    background: var(--surface) !important;
+    color: #e74c3c !important;
+    border: 2px solid #e74c3c !important;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--elevation) !important;
+}
+
+.btn-admin:hover {
+    background: #e74c3c !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--elevation-soft) !important;
+}
+
+/* 移除舊的高彩與漸層痕跡 */
+.upload-form::before, .assignment-card::before { display: none !important; }
+
+/* 細節：陰影深度微調（更淺，保持極簡）*/
+.success-container, .upload-info, .stats-section, .assignments-list, .upload-form {
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light) !important;
+}
+
+/* 統計標題和數字在 Neumorphic 主題下的樣式 */
+.stats-title { color: var(--text) !important; }
+
+/* 保持統計數字的漸層效果 */
+.stat-number {
+    background: linear-gradient(135deg, #4a90e2, #4CAF50) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* =========================
+   管理面板樣式
+   ========================= */
+
+/* 管理員登入表單 */
+.admin-login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.login-container {
+    background: var(--surface);
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: var(--elevation);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    border-radius: 25px 25px 0 0;
+}
+
+.login-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.login-container h3 {
+    color: var(--text);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.login-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.back-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--text);
+}
+
+/* 錯誤提示 */
+.alert.error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+}
+
+/* 管理面板專用樣式 */
+.admin-stats, .admin-settings, .admin-recent {
+    background: var(--surface);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: var(--elevation);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.admin-stats::before, .admin-settings::before, .admin-recent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    border-radius: 25px 25px 0 0;
+}
+
+.admin-stats h3, .admin-settings h3, .admin-recent h3 {
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 設定表單 */
+.settings-form {
+    max-width: 600px;
+}
+
+.settings-form .form-group {
+    margin-bottom: 20px;
+}
+
+.settings-form .btn-submit {
+    max-width: 200px;
+}
+
+/* 最近作業列表 */
+.recent-assignments {
+    display: grid;
+    gap: 20px;
+}
+
+.recent-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    box-shadow: var(--elevation-soft);
+}
+
+.recent-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--elevation);
+}
+
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.recent-header h4 {
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.recent-info {
+    margin-bottom: 15px;
+}
+
+.recent-info p {
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.recent-info strong {
+    color: var(--text);
+}
+
+.recent-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-visit-small, .btn-delete-small {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-visit-small {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+.btn-visit-small:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+.btn-delete-small {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn-delete-small:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.view-all-link {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-view-all-assignments {
+    display: inline-block;
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--elevation);
+    border: 2px solid #667eea;
+}
+
+.btn-view-all-assignments:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 登出按鈕 */
+.btn-logout {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-logout:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+    
+    .admin-stats, .admin-settings, .admin-recent {
+        padding: 25px 20px;
+    }
+    
+    .recent-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .recent-actions {
+        flex-direction: column;
+    }
+    
+    .btn-visit-small, .btn-delete-small {
+        width: 100%;
+        text-align: center;
+    }
+}
